@@ -6,8 +6,9 @@ using Servicios.ContactosService;
 
 CiudadModel nuevaCiudad = new CiudadModel();
 
-CiudadService ciudadService = new CiudadService("Server=localhost;Port=5432;User Id=postgres;Password=6408;Database=PrimerParcialDB;");
-PersonaService personaService = new PersonaService("Server=localhost;Port=5432;User Id=postgres;Password=6408;Database=PrimerParcialDB;");
+CiudadService ciudadService = new CiudadService("Server=localhost;Port=5432;User Id=postgres;Password=6408;Database=PrimerParcialDB3;");
+PersonaService personaService = new PersonaService("Server=localhost;Port=5432;User Id=postgres;Password=6408;Database=PrimerParcialDB3;");
+ClienteService clienteService = new ClienteService("Server=localhost;Port=5432;User Id=postgres;Password=6408;Database=PrimerParcialDB3;");
 
 /*/ CIUDAD - Agregar datos a la DB
 ciudadService.insertarCiudad(new Infraestructura.Modelos.CiudadModel {
@@ -37,13 +38,13 @@ ciudadService.EliminarCiudad(2);
 
 /*/ Persona - Agregar datos a la DB
 personaService.insertarPersona(new Infraestructura.Modelos.PersonaModel() {
-    id_ciudad = 6,
-    nombre = "Mario",
-    apellido = "Medina",
-    nro_documento = "584625",
-    direccion = "Paseo de fatima",
-    celular = "2657411251",
-    email = "mariomedina@gmail.com",
+    id_ciudad = 1,
+    nombre = "Edagar",
+    apellido = "Samaniego",
+    nro_documento = "589420",
+    direccion = "Paseo de aa",
+    celular = "85982659555",
+    email = "edgarsamaniego@gmail.com",
     estado = "A",
 });/*/
 
@@ -70,3 +71,29 @@ personaService.EliminarPersona(3);
 /*/
 
 //============================================================================================================================================================//
+
+/*/ Cliente - Agregar datos a la DB
+clienteService.insertarCliente(new Infraestructura.Modelos.ClienteModel() {
+    id_persona = 2,
+    fecha_ingreso = DateTime.Now,
+    calificacion = "5",
+    estado = "A",
+});/*/
+
+/*/ Cliente - Mostrar datos en la DB
+var MosCliente = clienteService.obtenerCliente(1);
+Console.WriteLine($"CodigoPersona: {MosCliente.id_persona} \nFecha ingreso: {MosCliente.fecha_ingreso} \nCalificacion: {MosCliente.calificacion}\nEstado: {MosCliente.estado}");
+/*/
+
+/*/ Cliente - Modificar datos en la DB
+var ModCliente = clienteService.obtenerCliente(1);
+ModCliente.id_persona = 1;
+ModCliente.fecha_ingreso = DateTime.Now;;
+ModCliente.calificacion = "9";
+ModCliente.estado = "I";
+clienteService.modificarCliente(ModCliente);
+/*/
+
+/*/ CIUDAD - Eliminar datos en la DB
+clienteService.EliminarCliente(2);
+/*/
