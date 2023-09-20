@@ -23,8 +23,7 @@ public class CiudadDatos {
     comando.ExecuteNonQuery();
   }
   
-  public CiudadModel obtenerCiudadPorId(int id)
-  {
+  public CiudadModel obtenerCiudadPorId(int id) {
     var conn = conexion.GetConexion();
     var comando = new Npgsql.NpgsqlCommand($"Select * from ciudad where id_ciudad = {id}", conn);
     using var reader = comando.ExecuteReader();
@@ -47,7 +46,6 @@ public class CiudadDatos {
                                            $"departamento = '{ciudad.departamento}', " +
                                            $"postal_code = '{ciudad.postal_code}' " +
                                            $" WHERE id_ciudad = {ciudad.id_ciudad}", conn);
-
     comando.ExecuteNonQuery();
   }
 

@@ -20,7 +20,6 @@ public class CiudadService {
         return ciudadDatos.obtenerCiudadPorId(id);
     }
     
-    
     public void modificarCiudad(CiudadModel ciudad) {
         validarDatos(ciudad);
         ciudadDatos.modificarCiudad(ciudad);
