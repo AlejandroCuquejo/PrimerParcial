@@ -9,6 +9,7 @@ CiudadModel nuevaCiudad = new CiudadModel();
 CiudadService ciudadService = new CiudadService("Server=localhost;Port=5432;User Id=postgres;Password=6408;Database=PrimerParcialDB3;");
 PersonaService personaService = new PersonaService("Server=localhost;Port=5432;User Id=postgres;Password=6408;Database=PrimerParcialDB3;");
 ClienteService clienteService = new ClienteService("Server=localhost;Port=5432;User Id=postgres;Password=6408;Database=PrimerParcialDB3;");
+CuentasService cuentaService = new CuentasService("Server=localhost;Port=5432;User Id=postgres;Password=6408;Database=PrimerParcialDB3;");
 
 /*/ CIUDAD - Agregar datos a la DB
 ciudadService.insertarCiudad(new Infraestructura.Modelos.CiudadModel {
@@ -96,4 +97,45 @@ clienteService.modificarCliente(ModCliente);
 
 /*/ CIUDAD - Eliminar datos en la DB
 clienteService.EliminarCliente(2);
+/*/
+
+//============================================================================================================================================================//
+
+/*/ Cuentas - Agregar datos a la DB
+cuentaService.insertarCuentas(new Infraestructura.Modelos.CuentasModel() {
+    id_cliente = 1,
+    nro_cuenta = "584",
+    fecha_alta = DateTime.Now,
+    tipo_cuenta = "Caja de ahorro",
+    estado = "A",
+    saldo = 155000,
+    nro_contrato = "098",
+    costo_mantenimiento = 150000,
+    promedio_acreditacion = "5",
+    moneda = "Guaranies",
+});/*/
+
+/*/ Cuentas - Mostrar datos en la DB
+var MosCuenta = cuentaService.obtenerCuenta(1);
+Console.WriteLine($"Codigo Cliente: {MosCuenta.id_cliente} \nNumero cuenta: {MosCuenta.nro_cuenta} \nFecha Alta: {MosCuenta.fecha_alta}\nTipo cuenta: {MosCuenta.tipo_cuenta}\nEstado: {MosCuenta.estado}\nSaldo: {MosCuenta.saldo}\nNro. contrato: {MosCuenta.nro_contrato}\nCosto mantenimiento: {MosCuenta.costo_mantenimiento}" +
+                  $"\nPromedio acreditacion: {MosCuenta.promedio_acreditacion}\nMoneda: {MosCuenta.moneda}");
+/*/
+
+/*/ Cuentas - Modificar datos en la DB
+var ModCuenta = cuentaService.obtenerCuenta(1);
+ModCuenta.id_cliente = 1;
+ModCuenta.nro_cuenta = "154";
+ModCuenta.fecha_alta = DateTime.Now;;
+ModCuenta.tipo_cuenta = "corriente";
+ModCuenta.estado = "A";
+ModCuenta.saldo = 120;
+ModCuenta.nro_contrato = "525";
+ModCuenta.costo_mantenimiento = 500;
+ModCuenta.promedio_acreditacion = "10";
+ModCuenta.moneda = "Doalres";
+cuentaService.modificarCuenta(ModCuenta);
+/*/
+
+/*/ CIUDAD - Eliminar datos en la DB
+cuentaService.EliminarCuentas(3);
 /*/
