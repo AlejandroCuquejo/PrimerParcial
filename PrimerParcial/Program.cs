@@ -10,6 +10,7 @@ CiudadService ciudadService = new CiudadService("Server=localhost;Port=5432;User
 PersonaService personaService = new PersonaService("Server=localhost;Port=5432;User Id=postgres;Password=6408;Database=PrimerParcialDB3;");
 ClienteService clienteService = new ClienteService("Server=localhost;Port=5432;User Id=postgres;Password=6408;Database=PrimerParcialDB3;");
 CuentasService cuentaService = new CuentasService("Server=localhost;Port=5432;User Id=postgres;Password=6408;Database=PrimerParcialDB3;");
+MovimientoService movimientoService = new MovimientoService("Server=localhost;Port=5432;User Id=postgres;Password=6408;Database=PrimerParcialDB3;");
 
 /*/ CIUDAD - Agregar datos a la DB
 ciudadService.insertarCiudad(new Infraestructura.Modelos.CiudadModel {
@@ -101,7 +102,7 @@ clienteService.EliminarCliente(2);
 
 //============================================================================================================================================================//
 
-/*/ Cuentas - Agregar datos a la DB
+/*/ CUENTAS - Agregar datos a la DB
 cuentaService.insertarCuentas(new Infraestructura.Modelos.CuentasModel() {
     id_cliente = 1,
     nro_cuenta = "584",
@@ -115,13 +116,13 @@ cuentaService.insertarCuentas(new Infraestructura.Modelos.CuentasModel() {
     moneda = "Guaranies",
 });/*/
 
-/*/ Cuentas - Mostrar datos en la DB
+/*/ CUENTAS - Mostrar datos en la DB
 var MosCuenta = cuentaService.obtenerCuenta(1);
 Console.WriteLine($"Codigo Cliente: {MosCuenta.id_cliente} \nNumero cuenta: {MosCuenta.nro_cuenta} \nFecha Alta: {MosCuenta.fecha_alta}\nTipo cuenta: {MosCuenta.tipo_cuenta}\nEstado: {MosCuenta.estado}\nSaldo: {MosCuenta.saldo}\nNro. contrato: {MosCuenta.nro_contrato}\nCosto mantenimiento: {MosCuenta.costo_mantenimiento}" +
                   $"\nPromedio acreditacion: {MosCuenta.promedio_acreditacion}\nMoneda: {MosCuenta.moneda}");
 /*/
 
-/*/ Cuentas - Modificar datos en la DB
+/*/ CUENTAS - Modificar datos en la DB
 var ModCuenta = cuentaService.obtenerCuenta(1);
 ModCuenta.id_cliente = 1;
 ModCuenta.nro_cuenta = "154";
@@ -136,6 +137,48 @@ ModCuenta.moneda = "Doalres";
 cuentaService.modificarCuenta(ModCuenta);
 /*/
 
-/*/ CIUDAD - Eliminar datos en la DB
+/*/ CUENTAS - Eliminar datos en la DB
 cuentaService.EliminarCuentas(3);
 /*/
+
+//============================================================================================================================================================//
+
+/*/ Movimiento - Agregar datos a la DB
+movimientoService.insertarMovimiento(new Infraestructura.Modelos.MovimientoModel() {
+    id_cuentas = 1,
+    fecha_movimiento = DateTime.Now,
+    tipo_movimiento = "Transferencia",
+    saldo_anterior = 500000,
+    saldo_actual = 200000,
+    monto_movimiento = 300000,
+    cuenta_origen = 25254852,
+    cuenta_destino = 24245896,
+    canal_decimal = "5.2",
+});/*/
+
+/*/ MIVIMIENTO - Mostrar datos en la DB
+var MosMovimiento = movimientoService.obtenerMovimiento(2);
+Console.WriteLine($"Codigo cuenta: {MosMovimiento.id_cuentas} \nFechaMovimiento: {MosMovimiento.fecha_movimiento} \nTipo movimiento: {MosMovimiento.tipo_movimiento}\nSaldo anterior: {MosMovimiento.saldo_anterior}\nSaldo actual: {MosMovimiento.saldo_actual}\nMontom movimiento: {MosMovimiento.monto_movimiento}\nCuenta origen: {MosMovimiento.cuenta_origen}\nCuenta destino: {MosMovimiento.cuenta_destino}" +
+                  $"\ncCanal decimal: {MosMovimiento.canal_decimal}");
+/*/
+
+/*/ MIVIMIENTO - Modificar datos en la DB
+var ModMovimiento = movimientoService.obtenerMovimiento(2);
+ModMovimiento.id_cuentas = 1;
+ModMovimiento.fecha_movimiento = DateTime.Now;
+ModMovimiento.tipo_movimiento = "Transferencia";
+ModMovimiento.saldo_anterior = 600000;
+ModMovimiento.saldo_actual = 300000;
+ModMovimiento.monto_movimiento = 300000;
+ModMovimiento.cuenta_origen = 25254852;
+ModMovimiento.cuenta_destino = 24245896;
+ModMovimiento.canal_decimal = "5.2";
+movimientoService.modificarMovimiento(ModMovimiento);
+/*/
+
+// MOVIMIENTO - Eliminar datos en la DB
+movimientoService.EliminarMovimiento(3);
+//
+
+
+
