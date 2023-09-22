@@ -13,20 +13,23 @@ public class CuentasService {
     
     public void insertarCuentas(CuentasModel cuentas) {
         //validarDatos(ciudad);
+        Console.WriteLine("Cuenta creada correctamente");
         cuentasDatos.insertarCuentas(cuentas);
     }
     
     public CuentasModel obtenerCuenta(int id) {
+        Console.WriteLine("Datos obtenidos correctamente");
         return cuentasDatos.obtenerCuentasPorId(id);
     }
     
     public void modificarCuenta(CuentasModel cuentas) {
         //validarDatos(ciudad);
+        Console.WriteLine("Cuenta editado correctamente");
         cuentasDatos.modificarCuenta(cuentas);
     } 
     
     public CuentasModel EliminarCuentas(int id) {
-        Console.WriteLine("Usuario borrado correctamente");
+        Console.WriteLine("Cuenta borrado correctamente");
         return cuentasDatos.EliminarCuentaPorId(id);
     }
     
